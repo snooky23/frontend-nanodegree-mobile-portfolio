@@ -19,12 +19,6 @@ cameron *at* udacity *dot* com
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 
-/*
-Fixed issues:
-- ChangePizzaSizes method, create a variable for getElementsByClassName("randomPizzaContainer") all actions should use the same one.
-- Replaced querySelector & querySelectorAll with getElementById & getElementsByClassName
-- updatePositions method, Separate the for loops to two independent for loops, they need to be loosely coupled
-*/
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   "Pepperoni",
