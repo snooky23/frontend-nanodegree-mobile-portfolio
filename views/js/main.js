@@ -21,9 +21,9 @@ cameron *at* udacity *dot* com
 
 /*
 Fixed issues:
--changePizzaSizes method, create a variable for getElementsByClassName("randomPizzaContainer") all actions should use the same one.
--Replaced querySelector & querySelectorAll with getElementById & getElementsByClassName
--
+- ChangePizzaSizes method, create a variable for getElementsByClassName("randomPizzaContainer") all actions should use the same one.
+- Replaced querySelector & querySelectorAll with getElementById & getElementsByClassName
+- updatePositions method, Separate the for loops to two independent for loops, they need to be loosely coupled
 */
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
@@ -506,14 +506,21 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+// the items variable can be calculate once.
+var items = document.getElementsByClassName('mover');
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.getElementsByClassName('mover');
+  var phasesArray = [];
+  var maxValues = 5;
+  //Separate the for loops to two independent for loops, they need to be loosely coupled
+  for (var i = 0; i < maxValues; i++) {
+    phasesArray.push(Math.sin((document.body.scrollTop / 1250) + i));
+  }
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = items[i].basicLeft + 100 *  phasesArray[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
