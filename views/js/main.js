@@ -24,6 +24,7 @@ Fixed issues:
 - ChangePizzaSizes method, create a variable for getElementsByClassName("randomPizzaContainer") all actions should use the same one.
 - Replaced querySelector & querySelectorAll with getElementById & getElementsByClassName
 - updatePositions method, Separate the for loops to two independent for loops, they need to be loosely coupled
+- changePizzaSizes method, fix multiple calls to the dom & make the method eiaser to calc sizes
 */
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
@@ -459,8 +460,8 @@ var resizePizzas = function(size) {
   function changePizzaSizes(size) {
     var randPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
     // No need for var dx and newwidth to to be inside the loop, all the newwidth sizes are the same
-    var dx = determineDx(randomPizzaContainer[0], size);
-    var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
+    var dx = determineDx(randPizzaContainer[0], size);
+    var newwidth = (randPizzaContainer[0].offsetWidth + dx) + 'px';
 
     for (var i = 0; i < randPizzaContainer.length; i++) {  
       randPizzaContainer[i].style.width = newwidth;
