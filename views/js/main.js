@@ -456,7 +456,7 @@ var resizePizzas = function(size) {
     var dx = determineDx(randPizzaContainer[0], size);
     var newwidth = (randPizzaContainer[0].offsetWidth + dx) + 'px';
 
-    for (var i = 0; i < randPizzaContainer.length; i++) {  
+    for (var i = 0 , len = randPizzaContainer.length; i < len; i++) {  
       randPizzaContainer[i].style.width = newwidth;
     }
   }
@@ -473,8 +473,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -515,7 +515,7 @@ function updatePositions() {
     phasesArray.push(Math.sin((document.body.scrollTop / 1250) + i));
   }
 
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0 , len = items.length; i < len; i++) {
     items[i].style.left = items[i].basicLeft + 100 *  phasesArray[i % 5] + 'px';
   }
 
@@ -535,8 +535,10 @@ window.addEventListener('scroll', updatePositions);
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
+  var rows = window.screen.height;
+  console.log("Avis size is: " + cols * rows);
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0 , len = cols * rows; i < len; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
