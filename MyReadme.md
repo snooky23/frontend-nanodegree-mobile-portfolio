@@ -15,6 +15,7 @@ Fixed issues:
 - ChangePizzaSizes & updatePositions methods, save the array length in local variable instead of calc it in every loop iteration.
 - Declare the pizzasDiv variable (var pizzasDiv = document.getElementById('randomPizzas');) outside the loop, so the function only makes one DOM call
 -  'DOMContentLoaded' listener, reduced background pizzas should be to at least 24 a multiple of the current cols value & Declaring the elem variable (var elem;) outside the loop
+- CSS 'Mover', increase site performance with hardware accelerated CSS
 
 
 in order to check that the task is working pleae use the folowing link:
