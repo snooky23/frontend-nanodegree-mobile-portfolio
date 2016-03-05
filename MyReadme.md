@@ -14,7 +14,8 @@ Fixed issues:
 - ChangePizzaSizes method, fix multiple calls to the dom & make the method easier to calc sizes by taking out calculation that has the same resulte from a loop.
 - ChangePizzaSizes & updatePositions methods, save the array length in local variable instead of calc it in every loop iteration.
 - Declare the pizzasDiv variable (var pizzasDiv = document.getElementById('randomPizzas');) outside the loop, so the function only makes one DOM call
--  'DOMContentLoaded' listener, reduced background pizzas should be to at least 24
+-  'DOMContentLoaded' listener, reduced background pizzas should be to at least 24 a multiple of the current cols value & Declaring the elem variable (var elem;) outside the loop
+
 
 in order to check that the task is working pleae use the folowing link:
 
